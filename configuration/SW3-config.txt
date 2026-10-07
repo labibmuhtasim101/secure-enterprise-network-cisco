@@ -8,10 +8,10 @@ hostname SW3
 ! -------------------------
 ! Basic Security
 ! -------------------------
-enable secret Class@123
+enable secret <REDACTED>
 
 line console 0
- password Console@123
+ password <REDACTED>
  login
  exit
 
@@ -53,7 +53,7 @@ ip default-gateway 192.168.99.1
 ! -------------------------
 ip domain-name enterprise.local
 
-username admin privilege 15 secret Cisco@123
+username admin privilege 15 secret <REDACTED>
 
 crypto key generate rsa
 1024
