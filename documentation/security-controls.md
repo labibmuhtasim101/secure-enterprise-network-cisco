@@ -208,7 +208,7 @@ This helps protect the Spanning Tree topology from unauthorized switch connectio
 
 ---
 
-12. Unused Port Shutdown
+## 12. Unused Port Shutdown
 
 Unused switch ports were administratively disabled.
 
@@ -216,7 +216,7 @@ This reduces the physical attack surface and prevents unused interfaces from bei
 
 ---
 
-13. Server VLAN ACL
+## 13. Server VLAN ACL
 
 An extended ACL named:
 
@@ -238,7 +238,7 @@ The ACL is applied outbound on the Server VLAN subinterface.
 
 ---
 
-14. Centralized Syslog
+## 14. Centralized Syslog
 
 Network devices send Syslog messages to SERVER1.
 
@@ -264,7 +264,7 @@ SERVER1 successfully received network-device log messages.
 
 ---
 
-15. Device Password Protection
+## 15. Device Password Protection
 
 The infrastructure devices use:
 - Enable secret
@@ -275,7 +275,7 @@ These controls provide multiple layers of authentication for device management.
 
 ---
 
-16. Security Design Summary
+## 16. Security Design Summary
 
 The project combines multiple security mechanisms:
 
