@@ -39,11 +39,6 @@ The enterprise network consists of:
                          │ │ │ │       │  │
                         PC1 PC2 PC3 PC4 PC5 PC6
 
-                         SERVER1
-                       VLAN 40
-                         │
-                        SW1
-
 | Device | Role |
 |--------|------|
 | R1 | Inter-VLAN routing, DHCP, ACL, SSH, Syslog |
