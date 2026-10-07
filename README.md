@@ -16,6 +16,7 @@ The enterprise network consists of:
 - 1 × Server
 
 ### Network Topology
+![Network Topology](topology/network-topology.png)
                          ┌─────────────────┐
                          │       R1        │
                          │ Cisco 2911      │
