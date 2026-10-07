@@ -1,0 +1,135 @@
+! ============================================================
+! SW3 - Access Switch Configuration
+! Secure Enterprise Network
+! ============================================================
+
+hostname SW3
+
+! -------------------------
+! Basic Security
+! -------------------------
+enable secret Class@123
+
+line console 0
+ password Console@123
+ login
+ exit
+
+! -------------------------
+! VLAN Configuration
+! -------------------------
+vlan 10
+ name HR
+ exit
+
+vlan 20
+ name IT
+ exit
+
+vlan 30
+ name SALES
+ exit
+
+vlan 40
+ name SERVERS
+ exit
+
+vlan 99
+ name MANAGEMENT
+ exit
+
+! -------------------------
+! Management SVI
+! -------------------------
+interface vlan 99
+ ip address 192.168.99.12 255.255.255.0
+ no shutdown
+ exit
+
+ip default-gateway 192.168.99.1
+
+! -------------------------
+! SSH Configuration
+! -------------------------
+ip domain-name enterprise.local
+
+username admin privilege 15 secret Cisco@123
+
+crypto key generate rsa
+1024
+
+ip ssh version 2
+
+access-list 10 permit 192.168.99.0 0.0.0.255
+
+line vty 0 4
+ login local
+ transport input ssh
+ access-class 10 in
+ exit
+
+! -------------------------
+! Trunk to SW1
+! -------------------------
+interface fa0/1
+ switchport mode trunk
+ exit
+
+! -------------------------
+! SALES PCs
+! PC5 / PC6
+! -------------------------
+interface range fa0/2 - 3
+ switchport mode access
+ switchport access vlan 30
+ switchport port-security
+ switchport port-security maximum 1
+ switchport port-security violation shutdown
+ switchport port-security mac-address sticky
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+ exit
+
+! -------------------------
+! Disable Unused Ports
+! -------------------------
+interface range fa0/4 - 24
+ shutdown
+ exit
+
+! -------------------------
+! DHCP Snooping
+! -------------------------
+ip dhcp snooping
+ip dhcp snooping vlan 30
+
+interface fa0/1
+ ip dhcp snooping trust
+ exit
+
+interface range fa0/2 - 3
+ ip dhcp snooping limit rate 10
+ exit
+
+no ip dhcp snooping information option
+
+! -------------------------
+! Dynamic ARP Inspection
+! -------------------------
+ip arp inspection vlan 30
+
+interface fa0/1
+ ip arp inspection trust
+ exit
+
+! -------------------------
+! Syslog
+! -------------------------
+logging 192.168.40.10
+
+service timestamps log datetime msec
+
+! -------------------------
+! End
+! -------------------------
+end

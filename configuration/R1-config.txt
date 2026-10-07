@@ -1,0 +1,125 @@
+! ============================================================
+! R1 - Secure Enterprise Network
+! Cisco 2911 Router
+! ============================================================
+
+hostname R1
+
+! ------------------------------------------------------------
+! Basic Security
+! ------------------------------------------------------------
+
+enable secret Class@123
+
+ip domain-name enterprise.local
+
+username admin privilege 15 secret Cisco@123
+
+! ------------------------------------------------------------
+! SSH Configuration
+! ------------------------------------------------------------
+
+crypto key generate rsa
+1024
+
+ip ssh version 2
+
+line vty 0 4
+ login local
+ transport input ssh
+ exit
+
+! ------------------------------------------------------------
+! Console Security
+! ------------------------------------------------------------
+
+line console 0
+ password Console@123
+ login
+ exit
+
+! ------------------------------------------------------------
+! Router-on-a-Stick
+! ------------------------------------------------------------
+
+interface GigabitEthernet0/0
+ no shutdown
+ exit
+
+interface GigabitEthernet0/0.10
+ encapsulation dot1Q 10
+ ip address 192.168.10.1 255.255.255.0
+ exit
+
+interface GigabitEthernet0/0.20
+ encapsulation dot1Q 20
+ ip address 192.168.20.1 255.255.255.0
+ exit
+
+interface GigabitEthernet0/0.30
+ encapsulation dot1Q 30
+ ip address 192.168.30.1 255.255.255.0
+ exit
+
+interface GigabitEthernet0/0.40
+ encapsulation dot1Q 40
+ ip address 192.168.40.1 255.255.255.0
+ ip access-group SERVER-ACCESS out
+ exit
+
+interface GigabitEthernet0/0.99
+ encapsulation dot1Q 99
+ ip address 192.168.99.1 255.255.255.0
+ exit
+
+! ------------------------------------------------------------
+! DHCP Configuration
+! ------------------------------------------------------------
+
+ip dhcp excluded-address 192.168.10.1
+ip dhcp excluded-address 192.168.20.1
+ip dhcp excluded-address 192.168.30.1
+
+ip dhcp pool HR
+ network 192.168.10.0 255.255.255.0
+ default-router 192.168.10.1
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool IT
+ network 192.168.20.0 255.255.255.0
+ default-router 192.168.20.1
+ dns-server 8.8.8.8
+ exit
+
+ip dhcp pool SALES
+ network 192.168.30.0 255.255.255.0
+ default-router 192.168.30.1
+ dns-server 8.8.8.8
+ exit
+
+! ------------------------------------------------------------
+! Server VLAN ACL
+! ------------------------------------------------------------
+
+ip access-list extended SERVER-ACCESS
+ permit ip 192.168.10.0 0.0.0.255 192.168.40.0 0.0.0.255
+ permit ip 192.168.20.0 0.0.0.255 192.168.40.0 0.0.0.255
+ permit ip 192.168.30.0 0.0.0.255 192.168.40.0 0.0.0.255
+ permit ip 192.168.99.0 0.0.0.255 192.168.40.0 0.0.0.255
+ deny ip any 192.168.40.0 0.0.0.255
+ exit
+
+! ------------------------------------------------------------
+! Syslog
+! ------------------------------------------------------------
+
+service timestamps log datetime msec
+
+logging 192.168.40.10
+
+! ------------------------------------------------------------
+! End of Configuration
+! ------------------------------------------------------------
+
+end
