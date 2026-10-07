@@ -6,6 +6,52 @@ Designed and implemented a segmented enterprise network using Cisco Packet Trace
 
 The network uses VLAN segmentation, Router-on-a-Stick inter-VLAN routing, DHCP, SSH, ACLs, Port Security, DHCP Snooping, Dynamic ARP Inspection, BPDU Guard, PortFast, and centralized Syslog monitoring.
 
+## 🏗️ Network Architecture
+
+The enterprise network consists of:
+
+- 1 × Cisco 2911 Router
+- 3 × Cisco 2960 Switches
+- 6 × Client PCs
+- 1 × Server
+
+### Network Topology
+                         ┌─────────────────┐
+                         │       R1        │
+                         │ Cisco 2911      │
+                         │ Router-on-a-Stick│
+                         └────────┬────────┘
+                                  │
+                              802.1Q Trunk
+                                  │
+                         ┌────────┴────────┐
+                         │      SW1        │
+                         │   Core Switch   │
+                         └───┬─────────┬───┘
+                             │         │
+                         Trunk       Trunk
+                             │         │
+                       ┌─────┴───┐ ┌───┴─────┐
+                       │  SW2    │ │   SW3   │
+                       │ Access  │ │  Access │
+                       └─┬─┬─┬─┬─┘ └──┬──┬──┘
+                         │ │ │ │       │  │
+                        PC1 PC2 PC3 PC4 PC5 PC6
+
+                         SERVER1
+                       VLAN 40
+                         │
+                        SW1
+
+| Device | Role |
+|--------|------|
+| R1 | Inter-VLAN routing, DHCP, ACL, SSH, Syslog |
+| SW1 | Core/distribution switch |
+| SW2 | HR/IT access switch |
+| SW3 | SALES access switch |
+| SERVER1 | Server VLAN + Syslog server |
+| PC1–PC6 | Departmental clients |
+
 ## 🎯 Objectives
 
 - Segment departments using VLANs
