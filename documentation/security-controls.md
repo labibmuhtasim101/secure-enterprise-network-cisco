@@ -1,46 +1,44 @@
 # Security Controls
 
-This project implements multiple Cisco security mechanisms to protect the enterprise network at both Layer 2 and Layer 3.
+This project implements multiple Cisco security mechanisms across Layer 2, Layer 3, and device management.
+
+The objective is to reduce the attack surface, protect access ports, secure management access, prevent common Layer 2 attacks, and control access to the server network.
+
+---
 
 ## 1. VLAN Segmentation
 
 The network is divided into separate VLANs:
 
-- VLAN 10 — HR
-- VLAN 20 — IT
-- VLAN 30 — SALES
-- VLAN 40 — SERVERS
-- VLAN 99 — MANAGEMENT
+| VLAN | Name | Purpose |
+|------|------|---------|
+| 10 | HR | Human Resources |
+| 20 | IT | IT Department |
+| 30 | SALES | Sales Department |
+| 40 | SERVERS | Server Network |
+| 99 | MANAGEMENT | Network Device Management |
 
-VLAN segmentation reduces unnecessary broadcast traffic and provides logical separation between departments.
+VLAN segmentation separates departments into different broadcast domains and provides logical network isolation.
 
-## 2. SSH Version 2
+---
 
-All network devices use SSH version 2 for secure remote administration.
+## 2. 802.1Q Trunking
 
-Configured on:
+802.1Q trunking is used between:
 
-- R1
-- SW1
-- SW2
-- SW3
+- R1 and SW1
+- SW1 and SW2
+- SW1 and SW3
 
-Telnet is disabled on the VTY lines.
+The trunks carry the required VLANs:
 
-## 3. Management VLAN
+- VLAN 10
+- VLAN 20
+- VLAN 30
+- VLAN 40
+- VLAN 99
 
-Network-device management interfaces use VLAN 99.
-
-| Device | Management IP |
-|--------|---------------|
-| R1 | 192.168.99.1 |
-| SW1 | 192.168.99.10 |
-| SW2 | 192.168.99.11 |
-| SW3 | 192.168.99.12 |
-
-## 4. SSH Access Control
-
-A standard ACL restricts SSH access to the management network:
+SW1's inter-switch trunks were explicitly configured using:
 
 ```text
-permit 192.168.99.0 0.0.0.255
+switchport mode trunk
