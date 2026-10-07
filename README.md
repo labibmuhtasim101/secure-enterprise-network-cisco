@@ -17,27 +17,6 @@ The enterprise network consists of:
 
 ### Network Topology
 ![Network Topology](topology/network-topology.PNG)
-                         ┌─────────────────┐
-                         │       R1        │
-                         │ Cisco 2911      │
-                         │ Router-on-a-Stick│
-                         └────────┬────────┘
-                                  │
-                              802.1Q Trunk
-                                  │
-                         ┌────────┴────────┐
-                         │      SW1        │
-                         │   Core Switch   │
-                         └───┬─────────┬───┘
-                             │         │
-                         Trunk       Trunk
-                             │         │
-                       ┌─────┴───┐ ┌───┴─────┐
-                       │  SW2    │ │   SW3   │
-                       │ Access  │ │  Access │
-                       └─┬─┬─┬─┬─┘ └──┬──┬──┘
-                         │ │ │ │       │  │
-                        PC1 PC2 PC3 PC4 PC5 PC6
 
 | Device | Role |
 |--------|------|
