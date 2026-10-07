@@ -39,7 +39,7 @@ The required VLANs were active and forwarding across the trunks:
 10, 20, 30, 40, 99
 
 SW1 Fa0/2 was explicitly configured as a trunk to avoid relying on dynamic trunk negotiation.
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -58,7 +58,7 @@ G0/0.40	192.168.40.1	Up/Up
 G0/0.99	192.168.99.1	Up/Up
 
 The physical G0/0 interface was also confirmed as Up/Up.
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -75,8 +75,7 @@ PC3	20	192.168.20.2
 PC4	20	192.168.20.3
 PC5	30	192.168.30.2
 PC6	30	192.168.30.3
-
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -93,7 +92,7 @@ Packets Sent: 4
 Packets Received: 4
 Packet Loss: 0%
 
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -110,7 +109,7 @@ Packets Sent: 4
 Packets Received: 4
 Packet Loss: 0%
 
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -126,7 +125,7 @@ Packets Sent: 4
 Packets Received: 4
 Packet Loss: 0%
 
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -143,7 +142,7 @@ PC6 successfully reached SW1:
 PC6 → 192.168.99.10
 
 The first ping timed out while ARP/MAC information was being learned, followed by successful replies.
-Result: PASS
+**Result: PASS**
 
 PC6 was subsequently restored to VLAN 30 and DHCP.
 
@@ -159,7 +158,8 @@ This was expected because the SSH VTY ACL permits only the Management VLAN:
 192.168.99.0/24
 
 Therefore, a device from VLAN 10 was prevented from accessing SW1 through SSH.
-Result: PASS — Unauthorized access blocked
+**Result: PASS**
+ — Unauthorized access blocked
 
 ---
 
@@ -182,7 +182,7 @@ This verified:
 - SSH version 2
 - Privileged EXEC access
 - Management VLAN access control
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -202,7 +202,7 @@ SSH Enabled - version 2.0
 Authentication timeout: 120 secs
 Authentication retries: 3
 
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -223,7 +223,7 @@ Fa0/3	1	1	0	Shutdown
 
 This confirms that each protected access port allows a maximum of one secure MAC address and currently has zero security violations.
 
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -254,7 +254,7 @@ Rate limit: 10 pps
 Option 82: Disabled
 
 DHCP Snooping successfully maintained DHCP bindings for client devices.
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -274,7 +274,7 @@ Source MAC failures: 0
 IP validation failures: 0
 
 Normal network traffic continued to work successfully after DAI was enabled.
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -292,7 +292,7 @@ deny ip any 192.168.40.0 0.0.0.255
 
 The ACL was successfully processed during the server connectivity tests.
 The deny rule had zero matches during testing because all tested traffic originated from authorized networks.
-Result: PASS
+**Result: PASS**
 
 ---
 
@@ -315,7 +315,7 @@ SERVER1 successfully displayed received Syslog messages from network devices.
 
 R1 also generated interface and configuration events that appeared in the local logging buffer and were sent toward the Syslog server.
 
-Result: PASS
+**Result: PASS**
 
 ---
 
