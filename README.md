@@ -31,7 +31,7 @@ The design uses **VLAN segmentation, router-on-a-stick inter-VLAN routing, DHCP,
 
 # 🏗️ Network Architecture
 
-![Network Topology](topology/network-topology.png)
+![Network Topology](topology/network-topology.PNG)
 
 ### Devices
 
