@@ -219,6 +219,42 @@ All final connectivity tests completed successfully with:
 
 ---
 
+📸 Screenshots
+
+VLAN Configuration
+![VLAN Configuration](configuration/vlan-configuration.png)
+
+Trunk Configuration
+![Trunk Configuration](configuration/trunk-configuration.png)
+
+DHCP
+![DHCP](configuration/dhcp.png)
+
+SSH Security
+![SSH](configuration/ssh.png)
+
+Port Security
+![Port Security](configuration/port-ssecurity.png)
+
+DHCP Snooping
+![DHCP-Snooping](configuration/dhcp-snooping.png)
+
+Dynamic ARP Inspection
+![ARP Inspection](configuration/arp-inspection.png)
+
+Server ACL
+![Sercer ACL](configuration/server-acl.png)
+
+Syslog
+![Syslog](configuration/syslog.png)
+
+Connectivity Tests
+![Connectivity Test PC1](configuration/connectivity-test-pc1.png)
+![Connectivity Test PC2](configuration/connectivity-test-pc2.png)
+![Connectivity Test PC3](configuration/connectivity-test-pc3.png)
+
+---
+
 🧰 Technologies & Concepts
 
 Networking
