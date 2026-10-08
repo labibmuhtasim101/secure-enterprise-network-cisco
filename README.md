@@ -222,36 +222,36 @@ All final connectivity tests completed successfully with:
 📸 Screenshots
 
 VLAN Configuration
-![VLAN Configuration](configuration/vlan-configuration.png)
+![VLAN Configuration](screenshots/vlan-configuration.png)
 
 Trunk Configuration
-![Trunk Configuration](configuration/trunk-configuration.png)
+![Trunk Configuration](screenshots/trunk-configuration.png)
 
 DHCP
-![DHCP](configuration/dhcp.png)
+![DHCP](screenshots/dhcp.png)
 
 SSH Security
-![SSH](configuration/ssh.png)
+![SSH](screenshots/ssh.png)
 
 Port Security
-![Port Security](configuration/port-ssecurity.png)
+![Port Security](screenshots/port-ssecurity.png)
 
 DHCP Snooping
-![DHCP-Snooping](configuration/dhcp-snooping.png)
+![DHCP-Snooping](screenshots/dhcp-snooping.png)
 
 Dynamic ARP Inspection
-![ARP Inspection](configuration/arp-inspection.png)
+![ARP Inspection](screenshots/arp-inspection.png)
 
 Server ACL
-![Sercer ACL](configuration/server-acl.png)
+![Sercer ACL](screenshots/server-acl.png)
 
 Syslog
-![Syslog](configuration/syslog.png)
+![Syslog](screenshots/syslog.png)
 
 Connectivity Tests
-![Connectivity Test PC1](configuration/connectivity-test-pc1.png)
-![Connectivity Test PC2](configuration/connectivity-test-pc2.png)
-![Connectivity Test PC3](configuration/connectivity-test-pc3.png)
+![Connectivity Test PC1](screenshots/connectivity-test-pc1.png)
+![Connectivity Test PC2](screenshots/connectivity-test-pc2.png)
+![Connectivity Test PC3](screenshots/connectivity-test-pc3.png)
 
 ---
 
